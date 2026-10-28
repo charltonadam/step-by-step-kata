@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Step-by-Step Kata</title>
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+  <body class="control">
+    <header class="topbar">
+      <div class="brand">Step-by-Step Kata</div>
+      <label class="kata-pick">Kata <select id="kata-select"></select></label>
+      <nav id="mode-nav">
+        <button data-mode="edit">Edit kata</button>
+        <button data-mode="area">1 · Mat area</button>
+        <button data-mode="size">2 · Size</button>
+        <button data-mode="starts">3 · Start positions</button>
+        <button data-mode="run" class="run-btn">▶ Run</button>
+      </nav>
+      <div class="spacer"></div>
+      <span id="proj-status" class="hint"></span>
+      <button id="open-projector">Open projector window</button>
+    </header>
+
+    <main>
+      <!-- Kata editor -->
+      <section id="panel-edit" class="panel editor" hidden>
+        <aside class="side">
+          <h3>Kata</h3>
+          <label class="field"><span>Name</span><input id="kata-name" type="text" /></label>
+          <label class="field"><span>Foot length (cm)</span><input id="kata-foot" type="number" min="5" max="60" step="1" /></label>
+          <div class="btn-row">
+            <button id="kata-new">New</button>
+            <button id="kata-import">Import…</button>
+            <button id="kata-export">Export</button>
+            <button id="kata-delete" class="danger">Delete</button>
+          </div>
+          <h3>Steps</h3>
+          <ol id="step-list"></ol>
+          <div class="btn-row">
+            <button id="step-add" title="New step after this one, starting from the same foot positions">+ Next step</button>
+            <button id="step-dup" title="Copy this step including arrows and text">Duplicate</button>
+            <button id="step-up" title="Move step up">↑</button>
+            <button id="step-down" title="Move step down">↓</button>
+            <button id="step-del" class="danger">Delete step</button>
+          </div>
+        </aside>
+        <div class="stage">
+          <div class="toolbar">
+            <button data-tool="left">+ Left foot</button>
+            <button data-tool="right">+ Right foot</button>
+            <button data-tool="arrow">+ Arrow</button>
+            <button data-tool="text">+ Text</button>
+            <span class="sep"></span>
+            <button data-tool="undo" title="Ctrl+Z">Undo</button>
+            <button data-tool="redo" title="Ctrl+Y">Redo</button>
+            <button data-tool="fit">Fit view</button>
+          </div>
+          <div class="canvas-wrap"><canvas id="editor-canvas" tabindex="0"></canvas></div>
+          <div class="statusline">
+            Drag pieces to move · drag the round handle to rotate (Shift = free) · Q/E rotate · arrow keys nudge ·
+            Delete removes · drag empty space to pan · scroll to zoom · PageUp/PageDown change step. The faded
+            footprints are the previous step.
+          </div>
+        </div>
+        <aside class="props" id="props"></aside>
+      </section>
+
+      <!-- Calibration 1: mat area -->
+      <section id="panel-area" class="panel setup" hidden>
+        <h2>Step 1 · Mark the mat area</h2>
+        <ol>
+          <li>Click <b>Open projector window</b>, move it onto the projector display, and press <b>F</b> (or its
+            button) to make it fullscreen. Do this before marking corners.</li>
+          <li>Click <b>Re-mark corners</b>, move the mouse onto the projected image, and click the four corners of
+            the mat in this order: <b>front-left, front-right, back-right, back-left</b>. "Front" is the direction
+            the students face.</li>
+          <li>To fine-tune, drag a corner handle. Or click a corner and nudge it with the arrow keys (Shift moves 10
+            px at a time).</li>
+        </ol>
+        <p id="area-status"></p>
+        <button id="area-reset" class="primary">Re-mark corners</button>
+      </section>
+
+      <!-- Calibration 2: proportion and footprint size -->
+      <section id="panel-size" class="panel setup" hidden>
+        <h2>Step 2 · Proportion and footprint size</h2>
+        <p>The floor now shows a grid of circles and the first step of the selected kata.</p>
+        <div class="slider-row">
+          <label for="aspect">Proportion</label>
+          <button data-nudge="aspect" data-factor="0.99">−</button>
+          <input type="range" id="aspect" min="-1" max="1" step="0.001" />
+          <button data-nudge="aspect" data-factor="1.01">+</button>
+          <output id="aspect-out"></output>
+        </div>
+        <p class="hint">Adjust until the circles on the floor are round, not ovals.</p>
+        <div class="slider-row">
+          <label for="scale">Footprint size</label>
+          <button data-nudge="scale" data-factor="0.98">−</button>
+          <input type="range" id="scale" min="-0.5" max="1.3" step="0.001" />
+          <button data-nudge="scale" data-factor="1.02">+</button>
+          <output id="scale-out"></output>
+        </div>
+        <p class="hint">Adjust until the footprints match your students' feet. Step distances, arrows and text all
+          scale together.</p>
+      </section>
+
+      <!-- Calibration 3: start positions and colours -->
+      <section id="panel-starts" class="panel setup" hidden>
+        <h2>Step 3 · Start positions and colours</h2>
+        <p>On the projected image, click to add a start position, drag to move it, and right-click to remove it. Every
+          student's footprints follow the same steps at the same time from their own start position.</p>
+        <p id="starts-status"></p>
+        <button id="starts-clear" class="danger">Remove all start positions</button>
+
+        <h3>Students face</h3>
+        <select id="facing">
+          <option value="0">Front edge (as marked)</option>
+          <option value="90">Right edge</option>
+          <option value="180">Back edge</option>
+          <option value="270">Left edge</option>
+        </select>
+
+        <h3>Colours</h3>
+        <p class="hint">Choose colours that stand out on this mat.</p>
+        <div class="colors">
+          <label><input type="color" data-color="left" /> Left foot</label>
+          <label><input type="color" data-color="right" /> Right foot</label>
+          <label><input type="color" data-color="arrow" /> Arrows</label>
+          <label><input type="color" data-color="text" /> Text</label>
+        </div>
+        <div class="btn-row"><button id="colors-reset">Reset colours</button></div>
+      </section>
+
+      <!-- Run -->
+      <section id="panel-run" class="panel runpanel" hidden>
+        <div class="run-head">
+          <div>
+            <div id="run-count" class="run-count"></div>
+            <div id="run-label" class="run-label"></div>
+          </div>
+          <div class="btn-row">
+            <button data-run="first">⏮ Restart</button>
+            <button data-run="prev">◀ Back</button>
+            <button data-run="next" class="primary">Next ▶</button>
+            <button data-run="blank" id="blank-btn">Blank</button>
+          </div>
+        </div>
+        <canvas id="run-preview"></canvas>
+        <p id="run-warn" class="warn"></p>
+        <p class="hint">Next: → ↓ PageDown Space · Back: ← ↑ PageUp · Restart: Home · Blank screen: B. Presentation
+          clickers work in either window.</p>
+      </section>
+    </main>
+
+    <input type="file" id="import-file" accept=".json,application/json" hidden />
+    <script type="module" src="/js/control/main.js"></script>
+  </body>
+</html>

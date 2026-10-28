@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "id": "kata-demo-step-turn",
+  "name": "Demo – Step and Turn",
+  "description": "A short example showing feet, arrows and text. Not a real kata.",
+  "units": "cm",
+  "footLength": 22,
+  "steps": [
+    {
+      "id": "s0",
+      "label": "Ready",
+      "items": [
+        { "type": "foot", "side": "left", "x": -15, "y": 0, "rot": 0, "active": false },
+        { "type": "foot", "side": "right", "x": 15, "y": 0, "rot": 0, "active": false },
+        { "type": "text", "text": "READY", "x": 0, "y": -60, "rot": 0, "size": 14 }
+      ]
+    },
+    {
+      "id": "s1",
+      "label": "Step forward with the left foot",
+      "items": [
+        { "type": "foot", "side": "left", "x": -15, "y": -75, "rot": 0, "active": true },
+        { "type": "foot", "side": "right", "x": 15, "y": 0, "rot": 0, "active": false },
+        { "type": "arrow", "points": [[-15, -15], [-28, -38], [-15, -58]], "width": 4 }
+      ]
+    },
+    {
+      "id": "s2",
+      "label": "Step forward with the right foot",
+      "items": [
+        { "type": "foot", "side": "left", "x": -15, "y": -75, "rot": 0, "active": false },
+        { "type": "foot", "side": "right", "x": 15, "y": -150, "rot": 0, "active": true },
+        { "type": "arrow", "points": [[15, -15], [28, -75], [15, -133]], "width": 4 }
+      ]
+    },
+    {
+      "id": "s3",
+      "label": "Turn around",
+      "items": [
+        { "type": "foot", "side": "left", "x": 45, "y": -75, "rot": 180, "active": true },
+        { "type": "foot", "side": "right", "x": 15, "y": -150, "rot": 180, "active": false },
+        { "type": "arrow", "points": [[-15, -60], [15, -20], [42, -60]], "width": 4 },
+        { "type": "text", "text": "TURN", "x": 95, "y": -110, "rot": 0, "size": 14 }
+      ]
+    },
+    {
+      "id": "s4",
+      "label": "Feet together",
+      "items": [
+        { "type": "foot", "side": "left", "x": 45, "y": -75, "rot": 180, "active": false },
+        { "type": "foot", "side": "right", "x": 15, "y": -75, "rot": 180, "active": true },
+        { "type": "arrow", "points": [[15, -135], [15, -112], [15, -92]], "width": 4 }
+      ]
+    }
+  ]
+}
