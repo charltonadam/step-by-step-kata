@@ -1,0 +1,516 @@
+{
+  "format": 1,
+  "id": "kata-demo-step-turn",
+  "name": "Demo – Step and Turn",
+  "description": "A short example showing feet, arrows and text. Not a real kata.",
+  "units": "cm",
+  "footLength": 22,
+  "steps": [
+    {
+      "id": "s0",
+      "label": "Ready",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": -15,
+          "y": 0,
+          "rot": 0,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 15,
+          "y": 0,
+          "rot": 0,
+          "active": false
+        },
+        {
+          "type": "text",
+          "text": "READY",
+          "x": 0,
+          "y": -60,
+          "rot": 0,
+          "size": 14
+        }
+      ]
+    },
+    {
+      "id": "s9wix2f7r",
+      "label": "block 1",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": -15,
+          "y": 0,
+          "rot": -90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 24,
+          "y": -29.5,
+          "rot": -90,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "s8rtrwbkf",
+      "label": "punch 1",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": -15,
+          "y": 0,
+          "rot": -90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": -50.5,
+          "y": -28.5,
+          "rot": -90,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "su5p35893",
+      "label": "block 2",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": -15,
+          "y": 0,
+          "rot": 90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 31.5,
+          "y": 23,
+          "rot": 90,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "sta9rl24f",
+      "label": "punch 2",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 66.5,
+          "y": 1.5,
+          "rot": 90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 31.5,
+          "y": 23,
+          "rot": 90,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "sq1500ow9",
+      "label": "centerline block 1",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 0.5,
+          "y": 0,
+          "rot": 0,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 31.5,
+          "y": 23,
+          "rot": 0,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "srf1botbx",
+      "label": "centerline punch 1",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 0.5,
+          "y": 0,
+          "rot": 0,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 31.5,
+          "y": -26,
+          "rot": 0,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "s6pm1gebe",
+      "label": "centerline punch 2",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": -0.5,
+          "y": -56.5,
+          "rot": 0,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 31.5,
+          "y": -26,
+          "rot": 0,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "svmlrls48",
+      "label": "centerline punch 3",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": -0.5,
+          "y": -56.5,
+          "rot": 0,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 30.5,
+          "y": -83.5,
+          "rot": 0,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "s0j07neeh",
+      "label": "turn block 3",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 59.5,
+          "y": -111,
+          "rot": 90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 30.5,
+          "y": -83.5,
+          "rot": 90,
+          "active": false
+        },
+        {
+          "type": "arrow",
+          "points": [
+            [
+              5,
+              -51.5
+            ],
+            [
+              62.5,
+              -46
+            ],
+            [
+              58.5,
+              -98.5
+            ]
+          ],
+          "width": 4
+        }
+      ]
+    },
+    {
+      "id": "s0iwiah0t",
+      "label": "punch 3",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 59.5,
+          "y": -111,
+          "rot": 90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 100.5,
+          "y": -83,
+          "rot": 90,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "suc9atbop",
+      "label": "block 4",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 59.5,
+          "y": -111,
+          "rot": -90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 29.5,
+          "y": -136,
+          "rot": -90,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "syom5xzah",
+      "label": "punch 4",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 3.5,
+          "y": -109.5,
+          "rot": -90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 29.5,
+          "y": -136,
+          "rot": -90,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "sz05zpygs",
+      "label": "centerline block 1",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 59,
+          "y": -112,
+          "rot": -180,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 29.5,
+          "y": -136,
+          "rot": -180,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "szcaxf6pv",
+      "label": "centerline punch 1",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 59,
+          "y": -112,
+          "rot": -180,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 29.5,
+          "y": -86,
+          "rot": -180,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "sibsyp8xq",
+      "label": "centerline punch 2",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 59.5,
+          "y": -60,
+          "rot": -180,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 29.5,
+          "y": -86,
+          "rot": -180,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "s8c1w0ft6",
+      "label": "centerline punch 3",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 59.5,
+          "y": -60,
+          "rot": -180,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 31.5,
+          "y": -38,
+          "rot": -180,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "sf7kmb6p4",
+      "label": "turn block 5",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": -2,
+          "y": -18.5,
+          "rot": -90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 31.5,
+          "y": -38,
+          "rot": -90,
+          "active": false
+        },
+        {
+          "type": "arrow",
+          "points": [
+            [
+              41.5,
+              -70.5
+            ],
+            [
+              3,
+              -76
+            ],
+            [
+              1.5,
+              -29.5
+            ]
+          ],
+          "width": 4
+        }
+      ]
+    },
+    {
+      "id": "scw4wafx2",
+      "label": "punch 5",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": -2,
+          "y": -18.5,
+          "rot": -90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": -31.5,
+          "y": -42,
+          "rot": -90,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "sm70r0tzu",
+      "label": "block 6",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": -2,
+          "y": -18.5,
+          "rot": 90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 26.5,
+          "y": 3.5,
+          "rot": 90,
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": "szviepdyn",
+      "label": "punch 6",
+      "items": [
+        {
+          "type": "foot",
+          "side": "left",
+          "x": 49.5,
+          "y": -19,
+          "rot": 90,
+          "active": false
+        },
+        {
+          "type": "foot",
+          "side": "right",
+          "x": 26.5,
+          "y": 3.5,
+          "rot": 90,
+          "active": false
+        }
+      ]
+    }
+  ]
+}
