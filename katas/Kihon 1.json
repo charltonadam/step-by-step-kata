@@ -1,8 +1,8 @@
 {
   "format": 1,
-  "id": "kata-demo-step-turn",
-  "name": "Demo – Step and Turn",
-  "description": "A short example showing feet, arrows and text. Not a real kata.",
+  "id": "kata-kihon-1",
+  "name": "Kihon 1",
+  "description": "",
   "units": "cm",
   "footLength": 22,
   "steps": [

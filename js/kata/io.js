@@ -5,7 +5,16 @@ import { normalizeKata } from './schema.js';
 const bundled = import.meta.glob('../../katas/*.json', { eager: true, import: 'default' });
 
 export function bundledKatas() {
-  return Object.values(bundled).map(normalizeKata);
+  const byId = new Map();
+  for (const [path, raw] of Object.entries(bundled)) {
+    const kata = normalizeKata(raw);
+    if (byId.has(kata.id)) {
+      console.warn(`${path} has the same id ("${kata.id}") as ${byId.get(kata.id).path}; only one will be loaded. Give each kata file a unique "id".`);
+      continue;
+    }
+    byId.set(kata.id, { path, kata });
+  }
+  return [...byId.values()].map((v) => v.kata);
 }
 
 export async function readKataFile(file) {

@@ -19,6 +19,7 @@ function defaults() {
     mode: 'edit', // edit | area | size | starts | run
     katas: {},
     currentKataId: null,
+    seededIds: null, // ids of katas from /katas already added to the library
     editStep: 0,
     calib: {
       corners: null, // 4 projector-window points: front-left, front-right, back-right, back-left
@@ -126,16 +127,27 @@ export function deleteKata(id) {
   update({ katas, currentKataId: next, editStep: 0, run: { step: 0, blank: false } });
 }
 
-// Makes sure there is at least one kata and a valid selection.
-export function ensureKatas(seed) {
+// Adds bundled katas the library hasn't seen before, and makes sure there is
+// at least one kata and a valid selection. Bundled katas are remembered by id,
+// so one the user deleted doesn't come back on the next start.
+export function ensureKatas(bundled) {
   let katas = state.katas;
-  if (!Object.keys(katas).length) {
-    katas = Object.fromEntries(seed().map((k) => [k.id, k]));
-    if (!Object.keys(katas).length) {
-      const k = newKata();
-      katas = { [k.id]: k };
-    }
+  const seen = new Set(state.seededIds ?? Object.keys(katas));
+  for (const k of bundled()) {
+    if (!seen.has(k.id) && !katas[k.id]) katas = { ...katas, [k.id]: k };
+    seen.add(k.id);
   }
+  if (!Object.keys(katas).length) {
+    const k = newKata();
+    katas = { [k.id]: k };
+  }
+  const seededIds = [...seen];
   const currentKataId = katas[state.currentKataId] ? state.currentKataId : Object.keys(katas)[0];
-  if (katas !== state.katas || currentKataId !== state.currentKataId) update({ katas, currentKataId });
+  if (
+    katas !== state.katas ||
+    currentKataId !== state.currentKataId ||
+    seededIds.length !== (state.seededIds ?? []).length
+  ) {
+    update({ katas, currentKataId, seededIds });
+  }
 }
